@@ -1,0 +1,87 @@
+.lobby-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 24px;
+  min-height: calc(100vh - 80px);
+}
+
+.lobby-content { max-width: 700px; width: 100%; }
+.lobby-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+
+.games-list {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.list-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.game-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0,245,255,0.05);
+  transition: background 0.15s;
+}
+.game-row:hover { background: rgba(0,245,255,0.03); }
+.game-row:last-child { border-bottom: none; }
+.game-row-info { display: flex; align-items: center; gap: 12px; }
+.game-row-player { font-size: 14px; color: var(--text); }
+.text-dim { color: var(--text-dim); }
+.empty-state { padding: 40px; text-align: center; color: var(--text-dim); font-size: 14px; }
+
+/* Active game */
+.active-game { max-width: 520px; width: 100%; }
+.active-header { margin-bottom: 24px; }
+.players-row { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.player-chip {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 100px;
+  font-size: 14px; font-weight: 700;
+  font-family: var(--font-display);
+}
+.chip-x { background: rgba(0,245,255,0.1); color: var(--x-color); border: 1px solid rgba(0,245,255,0.3); }
+.chip-o { background: rgba(255,0,110,0.1); color: var(--o-color); border: 1px solid rgba(255,0,110,0.3); }
+.chip-symbol { font-size: 20px; }
+.vs-text { font-family: var(--font-display); font-size: 14px; letter-spacing: 3px; color: var(--text-dim); }
+
+.waiting-box { text-align: center; padding: 40px; color: var(--text-dim); }
+.game-id-hint { font-size: 12px; margin-top: 12px; }
+.game-id-hint code { color: var(--accent); background: rgba(0,245,255,0.1); padding: 2px 8px; border-radius: 4px; }
+
+.game-status-bar {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.result-win { color: #22ff88; text-shadow: 0 0 20px #22ff88; }
+.result-lose { color: var(--accent2); }
+.result-draw { color: var(--accent3); }
+.status-your-turn { color: var(--accent); animation: pulse 1.5s ease infinite; }
+.status-wait { color: var(--text-dim); }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+.active-footer { display: flex; gap: 12px; margin-top: 24px; justify-content: center; }
+
+@media (max-width: 600px) {
+  .lobby-page { padding: 20px 16px; }
+  .lobby-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .game-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .game-row .btn { width: 100%; }
+  .players-row { gap: 12px; }
+  .player-chip { font-size: 12px; padding: 6px 12px; }
+  .active-footer { flex-direction: column; }
+  .active-footer .btn { width: 100%; }
+}

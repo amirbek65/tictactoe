@@ -1,0 +1,169 @@
+.home { padding: 0 24px; }
+
+.home-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.hero-glyph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glyph-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 280px;
+}
+
+.glyph-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 900;
+  border-radius: 12px;
+  animation: float-cell 3s ease-in-out infinite;
+}
+.glyph-cell:nth-child(2) { animation-delay: 0.3s; }
+.glyph-cell:nth-child(3) { animation-delay: 0.6s; }
+.glyph-cell:nth-child(4) { animation-delay: 0.9s; }
+.glyph-cell:nth-child(5) { animation-delay: 1.2s; }
+.glyph-cell:nth-child(6) { animation-delay: 1.5s; }
+.glyph-cell:nth-child(7) { animation-delay: 1.8s; }
+.glyph-cell:nth-child(8) { animation-delay: 2.1s; }
+.glyph-cell:nth-child(9) { animation-delay: 2.4s; }
+
+@keyframes float-cell {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.glyph-x {
+  background: rgba(0, 245, 255, 0.08);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  color: var(--x-color);
+  text-shadow: 0 0 20px var(--x-color);
+}
+.glyph-o {
+  background: rgba(255, 0, 110, 0.08);
+  border: 1px solid rgba(255, 0, 110, 0.2);
+  color: var(--o-color);
+  text-shadow: 0 0 20px var(--o-color);
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--accent3);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+.title-x { color: var(--x-color); text-shadow: 0 0 30px var(--x-color); }
+.title-o { color: var(--o-color); text-shadow: 0 0 30px var(--o-color); }
+.title-p { color: var(--accent3); text-shadow: 0 0 30px var(--accent3); }
+.title-sep { color: var(--text-dim); }
+
+.hero-desc {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+  max-width: 420px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+}
+
+.feature-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 245, 255, 0.4);
+}
+.feature-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.feature-card p {
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .home-hero { grid-template-columns: 1fr; text-align: center; }
+  .hero-desc { margin: 0 auto 36px; }
+  .hero-actions { justify-content: center; }
+  .home-features { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .home-features { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 32px 0;
+    gap: 32px;
+    text-align: center;
+  }
+  .hero-glyph { order: -1; }
+  .glyph-grid { max-width: 200px; margin: 0 auto; gap: 8px; }
+  .glyph-cell { font-size: 28px; border-radius: 8px; }
+  .hero-title { font-size: 32px; }
+  .hero-desc { font-size: 13px; margin: 0 auto 24px; }
+  .hero-actions { justify-content: center; }
+  .home-features { grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; }
+  .feature-card { padding: 16px; }
+  .feature-icon { font-size: 24px; }
+}
+@media (max-width: 400px) {
+  .home-features { grid-template-columns: 1fr; }
+  .hero-title { font-size: 26px; }
+}

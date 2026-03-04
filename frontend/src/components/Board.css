@@ -1,0 +1,78 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.cell {
+  aspect-ratio: 1;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cell:not(.cell-filled):not(:disabled):hover {
+  border-color: var(--accent);
+  background: rgba(0, 245, 255, 0.05);
+  box-shadow: inset 0 0 20px rgba(0, 245, 255, 0.05);
+}
+
+.cell:disabled:not(.cell-filled) {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.cell-filled { cursor: default; }
+
+.cell-x {
+  border-color: rgba(0, 245, 255, 0.4);
+  background: rgba(0, 245, 255, 0.05);
+}
+
+.cell-o {
+  border-color: rgba(255, 0, 110, 0.4);
+  background: rgba(255, 0, 110, 0.05);
+}
+
+.cell-win {
+  animation: win-pulse 1s ease-in-out infinite alternate;
+}
+.cell-win.cell-x { box-shadow: 0 0 30px rgba(0, 245, 255, 0.6) inset; }
+.cell-win.cell-o { box-shadow: 0 0 30px rgba(255, 0, 110, 0.6) inset; }
+
+@keyframes win-pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
+
+.cell-symbol {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 6vw, 48px);
+  font-weight: 900;
+  line-height: 1;
+  animation: pop-in 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cell-x .cell-symbol {
+  color: var(--x-color);
+  text-shadow: 0 0 20px var(--x-color);
+}
+
+.cell-o .cell-symbol {
+  color: var(--o-color);
+  text-shadow: 0 0 20px var(--o-color);
+}
+
+@keyframes pop-in {
+  from { transform: scale(0) rotate(-20deg); opacity: 0; }
+  to { transform: scale(1) rotate(0deg); opacity: 1; }
+}
