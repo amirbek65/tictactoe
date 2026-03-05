@@ -7,9 +7,7 @@ function getCookie(name) {
   return null;
 }
 
-// В продакшене BACKEND_URL берётся из переменной окружения VITE_API_URL
-// В разработке запросы проксируются через vite на localhost:8000
-const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const BASE_URL = "https://tictactoe-01.onrender.com/api";
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -46,7 +44,11 @@ export const myGames = () => api.get('/game/my/');
 // AI Game
 export const createAIGame = (difficulty, player_symbol) =>
   api.post('/game/ai/create/', { difficulty, player_symbol });
-export const makeAIMove = (id, position) => api.post(`/game/ai/${id}/move/`, { position });
-export const getAIGame = (id) => api.get(`/game/ai/${id}/`);
+
+export const makeAIMove = (id, position) =>
+  api.post(`/game/ai/${id}/move/`, { position });
+
+export const getAIGame = (id) =>
+  api.get(`/game/ai/${id}/`);
 
 export default api;
